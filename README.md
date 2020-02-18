@@ -48,7 +48,14 @@ Diarise is split into two apps - `accounts/` and `diary/`:
 * **`view_entry`**: A user can select any previous entry from the overview screen to see all of the information they entered when creating and completing the entry. 
 * **`intro`**: when a user first creates an account, or requests a review of the site functionality, they are directed to the intro page. This guides the user step-by-step through each section of the application, with an explanation of the functionality and how it contributes to the user’s positive psychology
 
-The functions in `views.py` are relatively brief. This is because a large portion of the functionality is handled front-end via instructions coded in javascript - well, jquery to be more exact. Each of the `intro`, `plan` and `review` functions has its own `_pages` view in `views.py` and a `.js` javascript file in `static/js`. The `_pages` functions in serve up the raw html content found in `static/html/` under `intro_pages/`, `review_pages/`, and `plan_pages/`. The corresponding javascript files give instructions for the user's browser to request this static html asynchronously via AJAX requests as and when it is required, and render it in a base html template. The javascript also includes instructions for the storage of user input, rendering of user input on sections of the page as required, and the sumission of completed entries via POST requests.
+The functions in `views.py` tell only part of the story. A large portion of the functionality is handled front-end via client-side javascript. Each of the intro, plan and review route’s has a similar structure:
+* The route’s view function in `views.py` (e.g `plan_entry`) loads a base template with an empty section for the page content
+* The base template includes javascript that loads the page functionality - these javascript files can be found in static/js `e.g plan.js`
+* The javascript requests the page content as it is required via asynchronous (or AJAX) requests, inserts the content into the main section of the page, and adds the required interactive functionality
+* The pages html content is served by a specific `<route name>_pages` view in views.py - e.g `plan_pages` loads the different page content for the plan route
+* The different page content can be found in `static/html` folders of the same name as the route in views.py e.g. `static/html/plan_pages/`
+* Once the user has completed their entry, the page javascript collects the input and submits it to the respective route’s view function via a POST request
+
 
 ### Bootstrap allows mobile responsive content
  
