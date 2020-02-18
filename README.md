@@ -59,7 +59,13 @@ The functions in `views.py` tell only part of the story. A large portion of the 
 
 ### Bootstrap allows mobile responsive content
 
+To easily facilitate responsive content, the app uses Bootstrap CSS. Bootstrap uses a grid layout that varies dependent on the width of the client viewport. So, for example, the page contents can be displayed in three columns for large screens, two for medium and one for small. The columns then simply stack on top of eachother when the viewport varies from large to small. This layout is specified using Bootstraps conrnicopia of CSS class names, which can be seen all over the html files e.g. `col-md-3` specifies a column that takes up a quarter of the page (the page is divided into 12 - so 3 / 12) when the viewport is medium sized or larger.
+
+Bootstrap also offers a huge range of custom components and utilites that can be used to add a professional touch to a site very quickly. These have been used more sparingly, with custom css being the preference given the site's more unique diary theme. 
+
 ### load exmples quickly adds info to database to test
+
+`load_example_data.py` includes a simple script that can be used in conjunction with the django api's shell to create a superuser account and quickly add some example entries to the database. This can be very helpful when testing the site - i.e. changing the layout of the `overview` or `view_entry pages` and generally gets development moving a little faster. 
 
 ### dockerfile to allow wide compatibility
  
