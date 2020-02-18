@@ -1,0 +1,89 @@
+.page-title {
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.title-subtext {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.title {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-top: 7px;
+    padding-right: 35px;
+}
+
+.goal-entry {
+    border-bottom: 1px solid black;
+    padding: 15px;
+    display: flex;
+}
+
+.success {
+    color: #004de1;
+}
+
+.fail {
+    color: rgb(85, 83, 83);
+    border-color: rgb(85, 83, 83);
+}
+
+.goal-description, .goal-reason {
+    margin-bottom: 5px;
+}
+
+.goal-description {
+    font-weight: bold;
+}
+
+.goal-reason {
+    font-style: italic;
+}
+
+.check-icon, .cross-icon {
+    margin-left: auto;
+    margin-top: 10px;
+    flex-shrink: 0;
+}
+
+.check-icon {
+    width: 30px;
+}
+
+.cross-icon {
+    width: 27px;
+}
+
+.section {
+    border: 2px darkgray dashed;
+    padding: 15px;
+}
+
+.row {
+    padding: 5px;
+}
+
+.grateful, .good, .great-things, .improvement {
+    color: #004de1;
+}
+
+.good-description {
+    font-weight: bold;
+}
+
+.good-impact {
+    font-style: italic;
+}
+
+.different-entry {
+    display: flex;
+}
+
+.col-md-4, .col-md-6, .col-md-8, .col-md-12 {
+    padding: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+}

@@ -1,0 +1,78 @@
+{% extends "diary/base.html" %}
+{% load static %}
+{% block title %}diarize: Plan your day{% endblock %}
+{% block head %}
+    <link href="{%  static 'diary/css/overview.css'  %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+        <div class="row p-0">
+
+            {% if unfinished_entry %}
+            <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
+                <div class="new-page">
+                    <h6 class="text-center font-weight-bold mt-3">In Progress:</h6>
+                    <h1 class="text-center mt-2">Day #{{ unfinished_entry.day_no }}</h1>
+                    <h6 class="text-center font-weight-bold">{{ unfinished_entry.get_weekday_abbr }} {{ unfinished_entry.get_date }}</h6>
+                    <div class="view-overlay new-overlay" id="review_entry">
+                        <h1 class="view-text" id="review_entry">Complete</h1>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
+                <div class="new-page">
+                    <div class="view-overlay new-overlay" id="plan_entry">
+                        <h1 class="new-text" id="plan">Start New Day</h1>
+                        <h1 class="plus-symbol" id="plan_entry">+</h1>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if not complete_entries %}
+                {% if not unfinished_entry %}
+                    <div class="col-sm-6 col-lg-8 col-xl-9 p-0">
+                        <div class="new-user-help">
+                            <p>This is your diary's overview screen. It's a little bare now, but that wont be the case for long!</p>
+                            <p>Go ahead and click in the empty entry box (the dotted area to the left / above) to begin your first entry. If you are unsure what you should be doing at any time you can follow the on-screen instructions, or review the introduction again at any time - just follow the link below, or click on the menu in the top-right corner:</p>
+                            <a href="/intro"><button class="btn btn-danger">Review introduction</button></a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-sm-6 col-lg-8 col-xl-9 p-0">
+                        <div class="new-user-help">
+                            <p>Great, you've already started your first entry. When you're done with the day, return here to finish it off.</p>
+                            <p>When you're ready, click on the incomplete entry (the dotted area to the left / above) to reveiw your day. If you are unsure what you should be doing at any time you can follow the on-screen instructions, or review the introduction again at any time - just follow the link below, or click on the menu in the top-right corner</p>
+                            <button class="btn btn-danger">Review introduction</button>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% for entry in complete_entries %}
+                <div class="col-sm-6 col-lg-4 col-xl-3 p-0">
+                    <div class="page">
+                        <div class="page-head">
+                            <div class="left-binder">
+                                <div class="hole"></div>
+                                <div class="binder"></div>
+                            </div>
+                            <div class="right-binder">
+                                <div class="hole"></div>
+                                <div class="binder"></div>
+                            </div>
+                        </div>
+                        <h1 class="text-center mt-2">Day #{{ entry.day_no }}</h1>
+                        <h6 class="text-center font-weight-bold">{{ entry.get_weekday_abbr }} {{ entry.get_date }}</h6>
+                        <div class="view-overlay" id="entry/{{ entry.id }}">
+                            <h1 class="view-text" id="entry/{{ entry.id }}">View</h1>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'diary/js/overview.js' %}"></script>
+{% endblock %}

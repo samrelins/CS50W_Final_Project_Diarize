@@ -1,0 +1,41 @@
+<div class="title">
+    <h1 class="display-4">day #{{ entry.day_no }}:</h1>
+    <h2 class="title-subtext">Review Your Good Deeds</h2>
+</div>
+<div class="title-separator"></div>
+<div class="row">
+    <div class="col-lg-4">
+        <p class="explanation-text">
+            We can give ourselves a boost by thinking about the good things we have done throughout the day.
+            Did you complete your planned good deed?
+        </p>
+        <p class="alt-explanation-text">
+            Not to worry. If you think about it, you will have done something good that impacted someone else, no matter how small. 
+            Think of something good you did today and consider its impact.
+        </p>
+        <div class="text-separator"></div>
+    </div>
+    <div class="col-lg-8">
+        <div id="good-deed" class="review-goal-entry">
+            <p class="goal-text"></p>
+        </div>
+        <div id="good-deed-yn">
+            <h5 class="good-deed-yn-text"><b>did you do it?</b></h5>
+            <button id="yes-button" class="btn btn-primary good-deed-yn-button">yes</button>
+            <button id="no-button" class="btn btn-primary good-deed-yn-button">no</button>
+        </div>
+        <form id="new-deed-form" class="deed-adventure-form">
+            <textarea id="new-deed-form-input"  class="form-control good-input deed-adventure-form-input" rows="7" placeholder="What have you done today that has positively impacted someone else, no matter how small"></textarea>
+            <button id="new-deed-form-button" type="submit" class="btn btn-primary good-submit deed-adventure-form-button">Done</button>
+        </form>
+        <div id="impact-entry" class="deed-adventure-entry">
+        </div>
+        <form id="impact-form" class="deed-adventure-form">
+            <textarea id="impact-form-input" class="form-control good-input deed-adventure-form-input" rows="7" placeholder="What impact do you think it had on the person / people involved?"></textarea>
+            <button id="impact-form-button" type="submit" class="btn btn-primary good-submit deed-adventure-form-button">Done</button>
+        </form>
+    </div>
+</div>
+<div class="page-bottom">
+    <button type="submit" class="btn btn-primary" id="page-submit">done</button>
+</div>

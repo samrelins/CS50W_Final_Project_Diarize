@@ -1,0 +1,64 @@
+.menu {
+    width: 165px;
+    border-radius: 15px;
+    border: 2px solid black;
+    z-index: 5;
+    background-color: white;
+    position: absolute;
+    top: -125px;
+    right: 10px;
+    opacity: 0;
+    transition: top 0s, opacity 0.5s;
+}
+
+
+.toggled.menu {
+    top: 70px;
+    opacity: 100;
+}
+
+.menu-arrow {
+    width: 0px;
+    height: 0px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid black;
+    position: relative;
+    left: 125px;
+    top: -11px;
+}
+
+.menu-link {
+    display: block;
+    padding: 15px;
+    margin-top: -10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-link:hover, .menu-link:visited, .menu-link:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-link:hover {
+    background-color: lightgray;
+}
+
+.home-link {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.logout-link {
+    border-radius: 0px 0px 10px 10px ;
+}
+
+.main {
+    background-color: rgb(238, 236, 236);
+    border-radius: 10px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: 30px;
+    min-height: 550px;
+}

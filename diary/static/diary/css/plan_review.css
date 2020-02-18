@@ -1,0 +1,289 @@
+.plan-page {
+    min-height:500px;
+    padding-bottom: 30px;
+}
+
+.title {
+    display: flex;
+    padding: 5px;
+}
+
+.title-subtext {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.title-separator {
+    border-bottom: 2px solid black;
+    margin-bottom: 40px;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+}
+
+.explanation-text, .alt-explanation-text {
+    margin-bottom: 30px;
+}
+
+.alt-explanation-text {
+    display: none;
+}
+
+.text-separator {
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.grateful-examples {
+    list-style-type: none;
+    display: table;
+    margin: auto;
+    color: #004de1;
+    margin-bottom: 20px;
+}
+
+.grateful-entry {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.grateful-text {
+    margin-left: 15px;
+    margin-top: 15px;
+    color: #004de1;
+    font-weight: bold;
+}
+
+.grateful-number {
+    margin-top: 15px;
+    margin-right: 10px;
+    color: #004de1;
+    font-weight: bold;
+}
+
+.example-goals {
+    display: table;
+    margin:auto;
+    margin-bottom: 25px;
+}
+
+#grateful-form-input, #goal-form-input, #memory-form-input {
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+#grateful-form-button, #goal-form-button, #memory-form-button {
+    margin-left: 5px;
+    margin-bottom: 17px;
+    margin-top: 2px;
+}
+
+.goal-entry, .review-goal-entry {
+    border-bottom: 1px solid black;
+    padding: 15px;
+}
+
+.review-goal-entry {
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.review-goal-entry:hover {
+    background-color: lightgray;
+}
+
+.completed-goal {
+    background-color: #007bff;
+    color: white;
+}
+
+.completed-goal:hover {
+    background-color: #3898ff;
+}
+
+.goal-text, .goal-reason-text, .review-goal-text {
+    margin-bottom: 5px;
+}
+
+.goal-text, .goal-reason-text {
+    color: #004de1;
+}
+
+.goal-text {
+    font-weight: bold;
+}
+
+.goal-reason-text {
+    font-style: italic;
+}
+
+#goal-form, #memory-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.deed-adventure-entry {
+    margin: 15px;
+    font-weight: bold;
+    color: #004de1;
+}
+
+.deed-adventure-form-input {
+    margin-top: 10px;
+    resize: none;
+}
+
+.deed-adventure-form-button {
+    margin-top: 10px;
+}
+
+#skip-intro {
+    margin-left: 10px;
+}
+
+.page-bottom, .intro-entry-done {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+
+#good-deed-yn, #adventure-yn {
+    display: flex;
+}
+
+.good-deed-yn-text, .adventure-yn-text {
+    margin: 20px;
+}
+
+.good-deed-yn-button, .adventure-yn-button {
+    height: 40px;
+    width: 45px;
+    margin-top: 14px;
+    margin-right: 5px;
+}
+
+.review-good-input {
+    resize: none;
+    margin-top: 20px;
+}
+
+ /* smaller screen only properties i.e. less than bootstrap large */
+@media (max-width: 992px) {
+
+    .explanation-text {
+        margin-bottom: 0px;
+    }
+
+    .title-separator {
+        margin-bottom: 30px;
+    }
+}
+
+.page-title {
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.entry-page-title-subtext {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.entry-section-title {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-top: 7px;
+    margin-bottom: 15px;
+    padding-right: 35px;
+}
+
+.entry-page-goal-entry {
+    border-bottom: 1px solid black;
+    padding: 15px;
+    display: flex;
+}
+
+.success {
+    color: #004de1;
+}
+
+.fail {
+    color: rgb(85, 83, 83);
+    border-color: rgb(85, 83, 83);
+}
+
+.goal-description, .goal-reason {
+    margin-bottom: 5px;
+}
+
+.goal-description {
+    font-weight: bold;
+}
+
+.goal-reason {
+    font-style: italic;
+}
+
+.check-icon, .cross-icon {
+    margin-left: auto;
+    margin-top: 10px;
+    flex-shrink: 0;
+}
+
+.check-icon {
+    width: 30px;
+}
+
+.cross-icon {
+    width: 27px;
+}
+
+.section {
+    border: 2px darkgray dashed;
+    padding: 15px;
+}
+
+.row {
+    padding: 5px;
+}
+
+.grateful, .good, .great-things, .improvement {
+    color: #004de1;
+}
+
+.good-description {
+    font-weight: bold;
+}
+
+.good-impact {
+    font-style: italic;
+}
+
+.different-entry {
+    display: flex;
+}
+
+.col-md-4, .col-md-6, .col-md-8, .col-md-12 {
+    padding: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.explanation {
+    margin-top: 20px;
+    padding: 19px;
+    background: white;
+    border-radius: 10px;
+    border: 2px dashed darkgray;
+    margin-bottom: 15px;
+}

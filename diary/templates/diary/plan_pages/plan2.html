@@ -1,0 +1,26 @@
+<div class="title">
+    <h1 class="display-4">day #{{ day_no }}:</h1>
+    <h2 class="title-subtext">Your Goals</h2>
+</div>
+<div class="title-separator"></div>
+<div class="row">
+    <div class="col-lg-4">
+        <p class="explanation-text">
+            Contemplating what you want to achieve with your day and why this is important to you 
+            is a great start towards making the most of your time. Write down a set of goals for 
+            your day, and for each goal consider and write down the impact that these will have.
+        </p>
+        <div class="text-separator"></div>
+    </div>
+    <div class="col-lg-8">
+        <div id="goal-entries">
+        </div>
+        <form id="goal-form">
+            <input id="goal-form-input" type="text" class="form-control" placeholder="Write something you hope to achieve with your day">
+            <button  id="goal-form-button" type="submit" class="btn btn-primary">Add</button> 
+        </form>
+    </div>
+</div>
+<div class="page-bottom">
+    <button type="submit" class="btn btn-primary" id="page-submit">Done</button>
+</div>

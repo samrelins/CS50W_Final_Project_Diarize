@@ -1,0 +1,14 @@
+{% extends "diary/base.html" %}
+{% load static %}
+{% block title %}diarize: Review your day{% endblock %}
+{% block head %}
+    <link href="{% static 'diary/css/plan_review.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    <div class="plan-page">
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'diary/js/review.js' %}"></script>
+{% endblock %}

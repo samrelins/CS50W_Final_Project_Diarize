@@ -1,0 +1,24 @@
+<div class="title">
+    <h1 class="display-4">day #{{ entry.day_no }}:</h1>
+    <h2 class="title-subtext">Review Your Goals</h2>
+</div>
+<div class="title-separator"></div>
+<div class="row">
+    <div class="col-lg-4">
+        <p class="explanation-text">
+            Now that your day is over, start by considering which of your goals you have managed to achieve.
+        </p>
+        <div class="text-separator"></div>
+    </div>
+    <div class="col-lg-8">
+        {% for goal in entry.goal_items.all %}
+            <div class="review-goal-entry" data-completed="">
+                <p class="review-goal-text"><b>{{ goal.description }}</b></p>
+                <p class="review-goal-text"><i>{{ goal.impact }}</i></pclass="goal-text">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="page-bottom">
+    <button type="submit" class="btn btn-primary" id="page-submit">done</button>
+</div>

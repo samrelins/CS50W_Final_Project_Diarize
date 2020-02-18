@@ -1,0 +1,35 @@
+<div class="title">
+    <h1 class="display-4">day #{{ entry.day_no }}:</h1>
+    <h2 class="title-subtext">Great Things That Happened Today</h2>
+</div>
+<div class="title-separator"></div>
+<div class="row">
+    <div class="col-lg-4">
+        <p class="explanation-text">
+            Taking the time to contemplate all the amazing things that happen throughout your
+            life can be a great source of happiness and comfort. Also, it'll make all this good
+            stuff stick in your memory better. Take a moment to consider the positive things that 
+            happened today.
+        </p>
+        <div class="text-separator"></div>
+    </div>
+    <div class="col-lg-8">
+        <div class="review-goal-entry">
+            <p class="goal-text"><b>{{ entry.adventure }}</p>
+        </div>
+        <div id="adventure-yn">
+            <h5 class="adventure-yn-text"><b>did you complete your adventure?</b></h5>
+            <button id="yes-button" class="btn btn-primary good-deed-yn-button">yes</button>
+            <button id="no-button" class="btn btn-primary good-deed-yn-button">no</button>
+        </div>
+        <div id="memory-entries">
+        </div>
+        <form id="memory-form">
+            <input id="memory-form-input" type="text" class="form-control" placeholder="Write down some great things that happened today">
+            <button  id="memory-form-button" type="submit" class="btn btn-primary">Add</button> 
+        </form>
+    </div>
+</div>
+<div class="page-bottom">
+    <button type="submit" class="btn btn-primary" id="page-submit">done</button>
+</div>

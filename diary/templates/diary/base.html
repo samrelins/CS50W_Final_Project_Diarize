@@ -1,0 +1,54 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% if page_title %}
+            <title>{{ page_title }}</title>
+        {% else %}
+            <title>{% block title %}{% endblock %}</title>
+        {% endif %}
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="{% static 'diary/css/base.css' %}" rel="stylesheet">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-primary">
+            <a href="{% url 'overview' %}" class="mx-auto"><span class="navbar-brand">diarize</span></a>
+            <button class="menu-button btn btn-primary border-white">{{ request.user.username }}</button>
+        </nav>
+
+        <div class="menu">
+            <div class="menu-arrow"></div>
+            <div class="menu-links">
+                <a class="home-link menu-link" href="{% url 'overview' %}">Home</a>
+                <a class="menu-link" href="{% url 'intro' %}">Help / Intro</a>
+                <a class="logout-link menu-link" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 main">
+                {% block content %}
+                {% endblock %}
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static 'diary/js/base.js' %}"></script>
+    <script src="{% static 'diary/js/utils.js' %}"></script>
+    {% if page_js_src %}
+        <script src="{% static page_js_src %}"></script>
+    {% endif %}
+    {% block scripts %}
+    {% endblock %}
+</html>
+

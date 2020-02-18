@@ -1,0 +1,104 @@
+.new-text {
+    text-align: center !important; 
+    color: #cfcfd2; 
+    margin-top: 20px;
+}
+
+.plus-symbol {
+    text-align: center !important; 
+    color: #cfcfd2; 
+    font-size: 7rem; 
+    position: relative;
+    bottom: 30px;
+}
+
+.page-head {
+    position: relative;
+    background-color: #004de1;
+    height: 50px;
+    border-bottom: 2px solid black;
+    border-radius: 7px 7px 0px 0px;
+}
+
+.left-binder, .right-binder {
+    position: absolute;
+    top: 9px;
+}
+
+.left-binder {
+    left: 30px;
+}
+
+.right-binder {
+    left: 165px;
+}
+
+.hole {
+    position: absolute;
+    border: 8px solid black;
+    border-radius: 15px;
+}
+
+.binder {
+    position: absolute;
+    height: 40px;
+    border: 6px solid #3b3a3a;
+    border-left: 6px solid #575353;
+    border-radius: 10px;
+    top: -27px;
+    left: 2px;
+}
+
+.new-user-help {
+    padding-top:40px;
+    padding-right:20px;
+    padding-left:20px;
+}
+
+.new-page {
+    border: 5px dashed black;
+    border-radius: 10px;
+}
+
+.page {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 7px 7px 22px -8px;
+}
+
+.page, .new-page, .view-overlay, .new-overlay {
+    margin: auto;
+    width: 210px;
+    height: 220px;
+}
+
+.page, .new-page { 
+    margin-top: 40px;
+    position: relative;
+}
+
+.view-overlay, .new-overlay {
+    background-color: #000000ab;
+    border-radius: 10px;
+    box-shadow: 7px 7px 22px -8px;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.new-overlay {
+    top: 0px;
+    right: -5px;
+}
+
+.view-overlay:hover, .new-overlay:hover {
+    opacity: 1;
+}
+
+.view-text {
+    text-align: center !important;
+    color: #cfcfd2;
+    margin-top: 145px;
+}
