@@ -58,6 +58,10 @@ The functions in `views.py` tell only part of the story. A large portion of the 
 
 
 ### Bootstrap allows mobile responsive content
+
+### load exmples quickly adds info to database to test
+
+### dockerfile to allow wide compatibility
  
  
  
