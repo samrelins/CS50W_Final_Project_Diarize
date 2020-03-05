@@ -2,11 +2,9 @@
 Diarize is my final project submission for the CS50w course. A positive psychology focussed diary application that encourages users to plan and review their days to make the best possible use of their time. The format of the application is based on the popular <a href="https://createurbestself.com">6 minute diary</a> with a few tweaks and extras added.
 
 ## Django
-Diarize has been built using the Django framework, introduced in project 3 of the CS50w course. A more detailed explanation of the django framework and project structure is included in the readme for project 3, but here is a brief overview. 
+Diarize has been built using Django, a high-level web framework that allows developers to quickly and iteratively build, prototype and deploy web applications. It does this by including a large amount of the common functionality of web applications (i.e. user account management, security, database management) right out of the box. The framework also encourages developers to work within this philosophy - the re-usable elements of a project (such as a comments system, or an basket order system) are housed in self-contained ‘app’ directories, so they can easily be picked up and slotted into other projects that require the same functionality. 
 
-Django is a high-level web framework that allows developers to quickly and iteratively build, prototype and deploy web applications. It does this by including a large amount of the common functionality of web applications (i.e. user account management, security, database management) right out of the box. The framework also encourages developers to work within this philosophy - the re-usable elements of a project (such as a comments system, or an basket order system) are housed in self-contained ‘app’ folders, so they can easily be picked up and slotted into other projects that require the same functionality. 
-
-The conventions of the django development philosophy are enforced by the framework’s structure. The overall product is referred to as a ‘project’ each project begins life as follows:
+The conventions of the django development philosophy are enforced by the framework’s structure. The overall product is referred to as a ‘project’ and begins its life as follows:
 
 ```
 manage.py
@@ -17,8 +15,7 @@ manage.py
 	wsgi.py
 ```
 
-The manage.py file contains the nuts and bolts that function as the command line API. The project folder contains the global settings and information that are used to stitch your project together.
-Functionality is then added by creating or (adding pre-prepared) apps. These are self contained folders that are added to the root directory, and look like so:
+The manage.py file contains the nuts and bolts that function as the command line API. The project directory contains the global settings and information that are used to stitch your project together. Functionality is then added to your project by creating new (or adding pre-prepared) apps. These are self contained directories that are added to the root, and look like so:
 
 ```
 new_app/
@@ -32,13 +29,15 @@ new_app/
 	views.py
 ```
 
-Each of the files teases out the common requirements of a web-server - models.py contains python classes that are used to build and maintain a database (if required), views.py contains the code describing the functionality of the app, tests.py contains (unsurprisingly) test scripts and so on. Other files can be added to this basic structure as required, such as a urls.py file to tell django what view function to call when a url is requested, static HTML / CSS / front-end .js files can be added and so on. As mentioned above, a more comprehensive explanation is given in the readme for project 3.
+Each of the files teases out the common requirements of a web-server - models.py contains python classes that are used to build and maintain a database (if required), views.py contains the code describing the functionality of the app, tests.py contains (unsurprisingly) test scripts and so on. Other files can be added to this basic structure as required, such as a urls.py file to tell django what view function to call when a url is requested, static HTML / CSS / front-end .js files can be added and so on.
+
+Django was introduced to the CS50w course during the third project. So, for those interested, a far more comprehensive breakdown of the framework can be found in the readme for that site - a thrilling dive into the world of takeaway pizza.
 
 ## Project Structure and Logic
 
-Diarise is split into two apps - `accounts/` and `diary/`:
+The Diarize project is split into two apps - `accounts/` and `diary/`:
 
-**`accounts/`** handles user registration, login, authentication and logout. This app serves as a perfect example of the reusability that Django encourages, as it is lifted almost unchanged from project 3. At the risk of sounding like a broken record, there is a good description of its functionality in the project 3 readme!
+**`accounts/`** handles user registration, login, authentication and logout. This app serves as a perfect example of the reusability that Django encourages, as it is lifted almost unchanged from project 3 mentioned above. A more detailed description of it's funcionality can be found in the readme for project 3 (also mentioned above).
 
 **`diary/`** handles all of the actual functionality of diarize. The user journey through the app (once logged in) can be broken down quite nicely via the view functions in `views.py`:
 
@@ -53,10 +52,10 @@ The back-end script in `views.py` tells only a small part of the story. A large 
 * The base template includes a javascript file that handles the rest of the page logic - these javascript files can be found in static/js `e.g plan.js`
 * The javascript requests the page content as it is required via asynchronous (or AJAX) requests, inserts the content into the main section of the page, and adds the required interactive functionality to the HTML elements once loaded
 * The page's html content is served by a specific `<route name>_pages` view in views.py - i.e. `plan_pages` loads the different page content for the plan route, the same for `intro_pages` and `review_pages`
-* The different page content can be found in `static/html` folders of the same name as the route in views.py e.g. `static/html/plan_pages/`
+* The different page content can be found in `static/html` directories of the same name as the route in views.py e.g. `static/html/plan_pages/`
 * Once the user has completed their entry, the page javascript collects the user input and submits it to the respective route’s view function via a POST request
 
-The remaining files in the app folders that aren't specifically mentioned are simply part of the wallpaper of the django framework, and are best described in the django documentation. There are some other features of the site, however, that warrant a mention:
+The remaining files in the app directories that aren't specifically mentioned are simply part of the wallpaper of the django framework, and are best described in the django documentation. There are some other features of the site, however, that warrant a mention:
 
 ## Bootstrap
 
