@@ -48,7 +48,7 @@ Diarise is split into two apps - `accounts/` and `diary/`:
 * **`view_entry`**: A user can select any previous entry from the overview screen to see all of the information they entered when creating and completing the entry. 
 * **`intro`**: when a user first creates an account, or requests a review of the site functionality, they are directed to the intro page. This guides the user step-by-step through each section of the application, with an explanation of the functionality and how it contributes to the user’s positive psychology
 
-The back-end script in `views.py` tells only a small part of the story. A large portion of the site's interacive features is handled front-end via several small HTML files stitched together with client-side javascript. Each of the intro, plan and review routes has a similar structure and logic:
+The back-end script in `views.py` tells only a small part of the story. A large portion of the site's interactive features is handled front-end via several small HTML files stitched together with client-side javascript. Each of the intro, plan and review routes has a similar structure and logic:
 * The route’s view function in `views.py` (e.g `plan_entry`) loads a base template with an empty section for the page content
 * The base template includes a javascript file that handles the rest of the page logic - these javascript files can be found in static/js `e.g plan.js`
 * The javascript requests the page content as it is required via asynchronous (or AJAX) requests, inserts the content into the main section of the page, and adds the required interactive functionality to the HTML elements once loaded
@@ -58,19 +58,19 @@ The back-end script in `views.py` tells only a small part of the story. A large 
 
 The remaining files in the app folders that aren't specifically mentioned are simply part of the wallpaper of the django framework, and are best described in the django documentation. There are some other features of the site, however, that warrant a mention:
 
-### Bootstrap
+## Bootstrap
 
-To easily facilitate responsive content (and to save a huge amount of time doing so!) the app uses Bootstrap CSS. Bootstrap uses a grid layout that varies dependent on the width of the client viewport. So, for example, the page contents can be displayed in three columns for large screens, two for medium and one for small. The columns then simply stack on top of eachother when the viewport varies from large to small. This layout is specified using Bootstraps conrnicopia of CSS class names, which can be seen all over the html files e.g. `col-md-3` specifies a column that takes up a quarter of the page (the page is divided into 12 - so 3 / 12) when the viewport is medium sized or larger.
+To easily facilitate responsive content (and to save a huge amount of time doing so!) the app uses Bootstrap CSS. Bootstrap uses a grid layout that varies dependent on the width of the client viewport. So, for example, the page contents can be displayed in three columns for large screens, two for medium and one for small. The columns then simply stack on top of eachother when the viewport varies from large to small. This layout is specified using Bootstraps cornucopia of CSS class names, which can be seen all over the html files e.g. `col-md-3` specifies a column that takes up a quarter of the page (the page is divided into 12 - so 3 / 12) when the viewport is medium sized or larger.
 
-Bootstrap also offers a huge range of custom components and utilites that can be used to add a professional touch to a site very quickly. These have been used more sparingly, with custom css (found in `static/css/`) being the preference given the site's more unique theme and look. 
+Bootstrap also offers a huge range of custom components and utilities that can be used to add a professional touch to a site very quickly. These have been used more sparingly, with custom css (found in `static/css/`) being the preference given the site's more unique theme and look. 
 
-### `load exmples.py`
+## `load exmples.py`
 
 To get things up-and-running more quickly, and to make testing easier, `load_example_data.py` includes instructions to load some example data into the app's database. The file contains a simple script that can be run using the django api's shell, creating a superuser account and quickly adding a few example entries under this account. This just makes life a little easier when making changes to the site, as it provides some example info to be displayed immediately.
 
-### Dockerfile
+## Dockerfile
 
-Docker is a great way to ensure that a server / app / program etc. can be run easily and quickly on almost any hardware. As a service, docker uses vertualisation to 'containerize' a tiny virtual machine in which your application can run. Starting at OS level, you specify only what your project requres to run, and then docker creates a container from which your server / app / program can then be used. It eliminates the age old issues of versioning and compatibility, where you have to ensure that you have the correct OS config / version of python / versions of each of the package requirements / the rest of the kitchen sink organised, in order to get your app running correctly.
+Docker is a great way to ensure that a server / app / program etc. can be run easily and quickly on almost any hardware. As a service, docker uses vertualization to 'containerize' a tiny virtual machine in which your application can run. Starting at OS level, you specify only what your project requires to run, and then docker creates a container from which your server / app / program can then be used. It eliminates the age old issues of versioning and compatibility, where you have to ensure that you have the correct OS config / version of python / versions of each of the package requirements / the rest of the kitchen sink organised, in order to get your app running correctly.
 
 
 Entire books can (and have been) written on the subject of Docker, but a good overview can be seen from the instructions contained within`Dockerfile`. Starting with a tiny OS, the file tells docker:
