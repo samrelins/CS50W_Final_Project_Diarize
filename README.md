@@ -1,5 +1,5 @@
 # Diarize
-Diarize is my final project submission for the CS50w course. A positive psychology focussed diary application that encourages users to plan and review their days to make the best possible use of their time. The format of the application is based on the popular 6-minute-diary with a few tweaks and extras added.
+Diarize is my final project submission for the CS50w course. A positive psychology focussed diary application that encourages users to plan and review their days to make the best possible use of their time. The format of the application is based on the popular <a href="https://createurbestself.com">6 minute diary</a> with a few tweaks and extras added.
 
 ## Django
 Diarize has been built using the Django framework, introduced in project 3 of the CS50w course. A more detailed explanation of the django framework and project structure is included in the readme for project 3, but here is a brief overview. 
@@ -34,13 +34,13 @@ new_app/
 
 Each of the files teases out the common requirements of a web-server - models.py contains python classes that are used to build and maintain a database (if required), views.py contains the code describing the functionality of the app, tests.py contains (unsurprisingly) test scripts and so on. Other files can be added to this basic structure as required, such as a urls.py file to tell django what view function to call when a url is requested, static HTML / CSS / front-end .js files can be added and so on. As mentioned above, a more comprehensive explanation is given in the readme for project 3.
 
-## Project Structure
+## Project Structure and Logic
 
 Diarise is split into two apps - `accounts/` and `diary/`:
 
 **`accounts/`** handles user registration, login, authentication and logout. This app serves as a perfect example of the reusability that Django encourages, as it is lifted almost unchanged from project 3. At the risk of sounding like a broken record, there is a good description of its functionality in the project 3 readme!
 
-**`diary/`** handles all of the actual functionality of diarize. The user journey through the app (once logged in) can be broken down quite nicely via the view functions in views.py:
+**`diary/`** handles all of the actual functionality of diarize. The user journey through the app (once logged in) can be broken down quite nicely via the view functions in `views.py`:
 
 * **`overview`**: once logged in, users first see the overview screen. This includes a diary page for each of the previous entries they have created - selecting any of these will take them to the relevant entry page. A blank entry appears in the top right of the page that allows users to create a new entry or, if they have already completed the plan stage of a new entry, allows users to complete an unfinished entry.
 * **`plan_entry`**: once a user chooses to begin a new entry they will be taken to the plan page. Users are asked to complete each of the sections of the plan one by one and, once submitted, their entries are added to the app’s database. The page then links back to the overview screen which will now include the option to complete this new entry when they are ready
@@ -48,26 +48,44 @@ Diarise is split into two apps - `accounts/` and `diary/`:
 * **`view_entry`**: A user can select any previous entry from the overview screen to see all of the information they entered when creating and completing the entry. 
 * **`intro`**: when a user first creates an account, or requests a review of the site functionality, they are directed to the intro page. This guides the user step-by-step through each section of the application, with an explanation of the functionality and how it contributes to the user’s positive psychology
 
-The functions in `views.py` tell only part of the story. A large portion of the functionality is handled front-end via client-side javascript. Each of the intro, plan and review route’s has a similar structure:
+The back-end script in `views.py` tells only a small part of the story. A large portion of the site's interacive features is handled front-end via several small HTML files stitched together with client-side javascript. Each of the intro, plan and review routes has a similar structure and logic:
 * The route’s view function in `views.py` (e.g `plan_entry`) loads a base template with an empty section for the page content
-* The base template includes javascript that loads the page functionality - these javascript files can be found in static/js `e.g plan.js`
-* The javascript requests the page content as it is required via asynchronous (or AJAX) requests, inserts the content into the main section of the page, and adds the required interactive functionality
-* The pages html content is served by a specific `<route name>_pages` view in views.py - e.g `plan_pages` loads the different page content for the plan route
+* The base template includes a javascript file that handles the rest of the page logic - these javascript files can be found in static/js `e.g plan.js`
+* The javascript requests the page content as it is required via asynchronous (or AJAX) requests, inserts the content into the main section of the page, and adds the required interactive functionality to the HTML elements once loaded
+* The page's html content is served by a specific `<route name>_pages` view in views.py - i.e. `plan_pages` loads the different page content for the plan route, the same for `intro_pages` and `review_pages`
 * The different page content can be found in `static/html` folders of the same name as the route in views.py e.g. `static/html/plan_pages/`
-* Once the user has completed their entry, the page javascript collects the input and submits it to the respective route’s view function via a POST request
+* Once the user has completed their entry, the page javascript collects the user input and submits it to the respective route’s view function via a POST request
+
+The remaining files in the app folders that aren't specifically mentioned are simply part of the wallpaper of the django framework, and are best described in the django documentation. There are some other features of the site, however, that warrant a mention:
+
+### Bootstrap
+
+To easily facilitate responsive content (and to save a huge amount of time doing so!) the app uses Bootstrap CSS. Bootstrap uses a grid layout that varies dependent on the width of the client viewport. So, for example, the page contents can be displayed in three columns for large screens, two for medium and one for small. The columns then simply stack on top of eachother when the viewport varies from large to small. This layout is specified using Bootstraps conrnicopia of CSS class names, which can be seen all over the html files e.g. `col-md-3` specifies a column that takes up a quarter of the page (the page is divided into 12 - so 3 / 12) when the viewport is medium sized or larger.
+
+Bootstrap also offers a huge range of custom components and utilites that can be used to add a professional touch to a site very quickly. These have been used more sparingly, with custom css (found in `static/css/`) being the preference given the site's more unique theme and look. 
+
+### `load exmples.py`
+
+To get things up-and-running more quickly, and to make testing easier, `load_example_data.py` includes instructions to load some example data into the app's database. The file contains a simple script that can be run using the django api's shell, creating a superuser account and quickly adding a few example entries under this account. This just makes life a little easier when making changes to the site, as it provides some example info to be displayed immediately.
+
+### Dockerfile
+
+Docker is a great way to ensure that a server / app / program etc. can be run easily and quickly on almost any hardware. As a service, docker uses vertualisation to 'containerize' a tiny virtual machine in which your application can run. Starting at OS level, you specify only what your project requres to run, and then docker creates a container from which your server / app / program can then be used. It eliminates the age old issues of versioning and compatibility, where you have to ensure that you have the correct OS config / version of python / versions of each of the package requirements / the rest of the kitchen sink organised, in order to get your app running correctly.
 
 
-### Bootstrap allows mobile responsive content
+Entire books can (and have been) written on the subject of Docker, but a good overview can be seen from the instructions contained within`Dockerfile`. Starting with a tiny OS, the file tells docker:
 
-To easily facilitate responsive content, the app uses Bootstrap CSS. Bootstrap uses a grid layout that varies dependent on the width of the client viewport. So, for example, the page contents can be displayed in three columns for large screens, two for medium and one for small. The columns then simply stack on top of eachother when the viewport varies from large to small. This layout is specified using Bootstraps conrnicopia of CSS class names, which can be seen all over the html files e.g. `col-md-3` specifies a column that takes up a quarter of the page (the page is divided into 12 - so 3 / 12) when the viewport is medium sized or larger.
+* we need python 3
+* install the python packages in `requirements.txt`
+* copy the files from our app directory
+* run the django migration instructions to create the app database
+* run the load_examples.py script to add some example info to the database
+* run a development server
 
-Bootstrap also offers a huge range of custom components and utilites that can be used to add a professional touch to a site very quickly. These have been used more sparingly, with custom css being the preference given the site's more unique diary theme. 
-
-### load exmples quickly adds info to database to test
-
-`load_example_data.py` includes a simple script that can be used in conjunction with the django api's shell to create a superuser account and quickly add some example entries to the database. This can be very helpful when testing the site - i.e. changing the layout of the `overview` or `view_entry pages` and generally gets development moving a little faster. 
-
-### dockerfile to allow wide compatibility
+With this, any system with docker installed can run a development sever of the diarize app. Functionality varies between different systems, but in a linux environment one need only type:
  
- 
- 
+ ```
+$ docker build -t diarize .
+$ docker run -it -p 8000:0000 diarize
+ ```
+ in a bash terminal, and Docker will do the rest. Simple as that. No need to check any other requirements or wrestle with any compatibility issues.
